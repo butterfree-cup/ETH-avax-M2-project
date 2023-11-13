@@ -236,7 +236,6 @@ export default function HomePage() {
             <p>Enter amount to withdraw:</p>
             <input type="number" value={withdrawAmount} onChange={(e) => setWithdrawAmount(e.target.value)}/>
             <button style={styles.buttonSecondary} onClick={withdraw}>Submit</button>
-            {/* Add your form elements and logic here */}
           </div>
         );
       case "deposit":
@@ -245,7 +244,6 @@ export default function HomePage() {
             <p>Enter amount to deposit:</p>
             <input type="number" value={depositAmount} onChange={(e) => setDepositAmount(e.target.value)}/>
             <button style={styles.buttonSecondary} onClick={deposit}>Submit</button>
-            {/* Add your form elements and logic here */}
           </div>
         );
       case "calculateFactorial":
