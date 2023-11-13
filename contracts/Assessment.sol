@@ -9,10 +9,14 @@ contract Assessment {
 
     event Deposit(uint256 amount);
     event Withdraw(uint256 amount);
+    event ChangeOwner(address newOwner);
 
     constructor(uint initBalance) payable {
         owner = payable(msg.sender);
         balance = initBalance;
+    }
+
+    receive() external payable {    
     }
 
     function getBalance() public view returns(uint256){
@@ -56,5 +60,24 @@ contract Assessment {
 
         // emit the event
         emit Withdraw(_withdrawAmount);
+    }
+
+    function calculateFactorial(uint256 n) public pure returns (uint256) {
+        require(n < 21, "Input should be less than 21 to avoid overflow");
+
+        uint256 result = 1;
+        for (uint256 i = 2; i <= n; i++) {
+            result *= i;
+        }
+
+        return result;
+    }
+
+    function changeOwner(address newOwner) public {
+        require(msg.sender == owner, "You are not the owner of this account");
+        require(newOwner != address(0), "Invalid new owner address");
+        owner = payable(newOwner);
+
+        emit ChangeOwner(newOwner);
     }
 }
